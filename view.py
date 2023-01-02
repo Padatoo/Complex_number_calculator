@@ -1,6 +1,4 @@
 import logger
-import const
-import validator
 
 num1 = ''
 num2 = ''
@@ -9,24 +7,26 @@ mode = ''
 
 def get_complex_num():
     num = ''
-    while not validator.validate_num(const.COMPLEX_PATTERN, num):
-        num = input('Введите комплексное число в формате a + bj: ')
-        if not validator.validate_num(const.COMPLEX_PATTERN, num):
-            print('Введено неверное число. Попробуйте снова.')
+    while num == '':
+        try:
+            num = complex(input('Введите комплексное число в формате a+bj: '))
+        except:
+            print('Введены неверные символы или лишние пробелы. Попробуйте снова.')
     return num
 
 def get_rational_num():
     num = ''
-    while not validator.validate_num(const.RATIONAL_PATTERN, num):
-        num = input('Введите рациональное число в формате a/b: ')
-        if not validator.validate_num(const.RATIONAL_PATTERN, num):
-            print('Введено неверное число. Попробуйте снова.')
+    while num == '':
+        try:
+            num = float(input('Введите рациональное число: '))
+        except:
+            print('Введены неверные символы. Попробуйте снова.')
     return num
 def get_sign():
     operator = ''
-    while not validator.validate_num(const.OPERATOR_PATTERN, operator):
+    while operator not in ["+", "-", "/", "*"]:
         operator = input('Введите операцию (+, -, *, /): ')
-        if not validator.validate_num(const.OPERATOR_PATTERN, operator):
+        if operator not in ["+", "-", "/", "*"]:
             print('Неверный арифметический оператор. Попробуйте снова.')
     return operator
 

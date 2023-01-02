@@ -1,12 +1,11 @@
-from fractions import Fraction
+import operator
 
-def calc_value(frac1, frac2, sign):
-    if sign == '+':
-        result = Fraction(frac1) + Fraction(frac2)
-    elif sign == '-':
-        result = Fraction(frac1) - Fraction(frac2)
-    elif sign == '*':
-        result = Fraction(frac1) * Fraction(frac2)
-    else:
-        result = Fraction(frac1) / Fraction(frac2)
-    return result
+ops = {
+    '+' : operator.add,
+    '-' : operator.sub,
+    '*' : operator.mul,
+    '/' : operator.truediv,  # use operator.div for Python 2
+}
+
+def calc_value(num1, num2, oper):
+    return ops[oper](num1, num2)

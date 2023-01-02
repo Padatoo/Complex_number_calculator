@@ -1,10 +1,10 @@
-def calc_value(real, real1, znak):
-    if znak == '+':
-        result = complex(real.replace(' ', '')) + complex(real1.replace(' ', ''))
-    elif znak == '-':
-        result = complex(real.replace(' ', '')) - complex(real1.replace(' ', ''))
-    elif znak == '*':
-        result = complex(real.replace(' ', '')) * complex(real1.replace(' ', ''))
-    else:
-        result = complex(real.replace(' ', '')) / complex(real1.replace(' ', ''))
-    return result
+import operator
+
+ops = {
+        '+': operator.add,
+        '-': operator.sub,
+        '*': operator.mul,
+        '/': operator.truediv,  # use operator.div for Python 2
+    }
+def calc_value(num1, num2, oper):
+    return ops[oper](num1, num2)
